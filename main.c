@@ -282,7 +282,7 @@ void drawSector(Uint16 *pixels, sector *Sector, player character, float pSn, flo
         if (ty0 < 1 & ty1 < 1 & !cWall.is_portal) {
             continue;
         }
-        if (((((cWall.y1-cWall.y0) * rx1) + (-(cWall.x1-cWall.x0)*ry1)) > -1) & !cWall.is_portal) {
+        if (((((cWall.y1-cWall.y0) * rx1) + (-(cWall.x1-cWall.x0)*ry1)) > -1)) {
             continue;
         }
         int hasClipped = 0;
@@ -356,7 +356,6 @@ void drawSector(Uint16 *pixels, sector *Sector, player character, float pSn, flo
                 }
                 if (portal_within_screen == 1) {
                     int collision = pointWallCollision(character.x, character.y, cWall.x0, cWall.y0, cWall.x1, cWall.y1, 2.0);
-                    //printf("%d %s", collision, " ");
                     if (collision == 1) {
                         if (hasClipped == 1) {
                             sx0 = 1;
@@ -380,8 +379,6 @@ void drawSector(Uint16 *pixels, sector *Sector, player character, float pSn, flo
     }
     draw_flat(pixels, ceilingLut, 1, portalBounds);
     draw_flat(pixels, floorLut, 2, portalBounds);
-    //free(*ceilingLut);
-    //free(*floorLut);
     for (int portalIndex=0; portalIndex<portalCapacity; portalIndex++) {
         portalRender portalInfo = portalQueue[portalIndex];
         sector *portalSector = level->sectors[portalInfo.sector_link];
@@ -442,27 +439,6 @@ int isPlayerWithinConvexSector(player character) {
     }
     return -1;
 }
-
-/*
-int inside = 1;
-        wall *walls = Sector->walls;
-        size_t wallCount = Sector->count;
-        printf("%p %s", &wallCount, " ");
-        //printf("%d %s", (int)wallCount, " ");
-        
-         for (int w=0; w<wallCount; w++) {
-           wall cWall = walls[w];
-           float cross = (cWall.x1-cWall.x0) * (character.y-cWall.y0) - (cWall.y1-cWall.y0) * (character.x-cWall.x0);
-           if (cross > 0) {
-            inside = 0;
-           }
-        }
-        
-       if (inside == 1) {
-        return i;
-    }
-    i ++;
-*/
 
 // seems to be that clipping or something related to rendering other sectors is harming performance
 

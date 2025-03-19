@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/frase/OneDrive/Desktop/C_Portal_Rendering",
-      "program": "c:/Users/frase/OneDrive/Desktop/C_Portal_Rendering/main",
+      "cwd": "c:/Users/frase/OneDrive/Desktop/C",
+      "program": "c:/Users/frase/OneDrive/Desktop/C/main",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
